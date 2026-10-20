@@ -4,6 +4,10 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 
 import healthRoutes from './routes/health.routes';
+import userRoutes from './routes/user.routes';
+import authRoutes from './routes/auth.routes';
+import adminRoutes from './routes/admin.routes';
+
 import { errorHandler } from './middleware/error.middleware';
 
 const app = express();
@@ -23,6 +27,9 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/v1/health", healthRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/users", userRoutes);
+app.use("api/v1/admin", adminRoutes);
 
 app.use(errorHandler);
 

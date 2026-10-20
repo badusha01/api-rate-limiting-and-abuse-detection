@@ -8,6 +8,10 @@ export const errorHandler = (
 ): void => {
     console.error(error);
 
+    if(res.headersSent) {
+        return;
+    }
+
     res.status(500).json({
         success: false,
         message: "Internal server error"
